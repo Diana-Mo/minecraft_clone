@@ -35,7 +35,11 @@ public class Chunk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        mesh = GetComponent<MeshFilter>().mesh;
+        chunkCollider = GetComponent<MeshCollider>();
+
+        CubeTop(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        UpdateMesh();
     }
 
     // Update is called once per frame
@@ -45,9 +49,27 @@ public class Chunk : MonoBehaviour
     }
 
     //
-    void CubeTop(int s, int y, int z, byte block)
+    void CubeTop(int x, int y, int z, byte block)
     {
+        newVertices.Add(new Vector3(x, y, z + 1));
+        newVertices.Add(new Vector3(x+1, y, z + 1));
+        newVertices.Add(new Vector3(x+1, y, z));
+        newVertices.Add(new Vector3(x, y, z));
 
+        newTriangles.Add(faceCount * 4); //1
+        newTriangles.Add(faceCount * 4 + 1); //2
+        newTriangles.Add(faceCount * 4 + 2); //2
+        newTriangles.Add(faceCount * 4); //1
+        newTriangles.Add(faceCount * 4 + 2); //3
+        newTriangles.Add(faceCount * 4 + 3); //4
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        newUV.Add(new Vector2(textureWidth * texturePos.x + textureWidth, textureWidth * texturePos.y));
+        newUV.Add(new Vector2(textureWidth * texturePos.x + textureWidth, textureWidth * texturePos.y + textureWidth));
+        newUV.Add(new Vector2(textureWidth * texturePos.x, textureWidth * texturePos.y + textureWidth));
+        newUV.Add(new Vector2(textureWidth * texturePos.x, textureWidth * texturePos.y));
     }
 
     //called everytime a surface is created
@@ -55,6 +77,18 @@ public class Chunk : MonoBehaviour
     //clear out a raise and add the three arrays to the mesh
     void UpdateMesh()
     {
+        mesh.Clear();
+        mesh.vertices = newVertices.ToArray();
+        mesh.uv = newUV.ToArray();
+        mesh.triangles = newTriangles.ToArray();
+        mesh.Optimize();
+        mesh.RecalculateNormals();
 
+        chunkCollider.sharedMesh = null;
+        chunkCollider.sharedMesh = mesh;
+        newVertices.Clear();
+        newUV.Clear();
+        newTriangles.Clear();
+        faceCount = 0; 
     }
 }
