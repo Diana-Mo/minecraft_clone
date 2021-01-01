@@ -44,11 +44,15 @@ public class Chunk : MonoBehaviour
         
     }
 
+    //
     void CubeTop(int s, int y, int z, byte block)
     {
 
     }
 
+    //called everytime a surface is created
+    //it will refresh our display
+    //clear out a raise and add the three arrays to the mesh
     void UpdateMesh()
     {
 
