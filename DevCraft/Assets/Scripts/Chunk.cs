@@ -39,6 +39,12 @@ public class Chunk : MonoBehaviour
         chunkCollider = GetComponent<MeshCollider>();
 
         CubeTop(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        CubeNorth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        CubeEast(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        CubeSouth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        CubeWest(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        CubeBot(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+
         UpdateMesh();
     }
 
@@ -46,30 +52,6 @@ public class Chunk : MonoBehaviour
     void Update()
     {
         
-    }
-
-    //
-    void CubeTop(int x, int y, int z, byte block)
-    {
-        newVertices.Add(new Vector3(x, y, z + 1));
-        newVertices.Add(new Vector3(x+1, y, z + 1));
-        newVertices.Add(new Vector3(x+1, y, z));
-        newVertices.Add(new Vector3(x, y, z));
-
-        newTriangles.Add(faceCount * 4); //1
-        newTriangles.Add(faceCount * 4 + 1); //2
-        newTriangles.Add(faceCount * 4 + 2); //2
-        newTriangles.Add(faceCount * 4); //1
-        newTriangles.Add(faceCount * 4 + 2); //3
-        newTriangles.Add(faceCount * 4 + 3); //4
-
-        Vector2 texturePos; ;
-        texturePos = rock;
-
-        newUV.Add(new Vector2(textureWidth * texturePos.x + textureWidth, textureWidth * texturePos.y));
-        newUV.Add(new Vector2(textureWidth * texturePos.x + textureWidth, textureWidth * texturePos.y + textureWidth));
-        newUV.Add(new Vector2(textureWidth * texturePos.x, textureWidth * texturePos.y + textureWidth));
-        newUV.Add(new Vector2(textureWidth * texturePos.x, textureWidth * texturePos.y));
     }
 
     //called everytime a surface is created
@@ -86,9 +68,106 @@ public class Chunk : MonoBehaviour
 
         chunkCollider.sharedMesh = null;
         chunkCollider.sharedMesh = mesh;
+
         newVertices.Clear();
         newUV.Clear();
         newTriangles.Clear();
-        faceCount = 0; 
+        faceCount = 0;
+    }
+
+    //
+    void CubeTop(int x, int y, int z, byte block)
+    {
+        newVertices.Add(new Vector3(x, y, z + 1));
+        newVertices.Add(new Vector3(x+1, y, z + 1));
+        newVertices.Add(new Vector3(x+1, y, z));
+        newVertices.Add(new Vector3(x, y, z));
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        Cube(texturePos);
+    }
+
+    void CubeNorth(int x, int y, int z, byte block)
+    {
+        newVertices.Add(new Vector3(x + 1, y - 1, z + 1));
+        newVertices.Add(new Vector3(x + 1, y, z + 1));
+        newVertices.Add(new Vector3(x, y, z + 1));
+        newVertices.Add(new Vector3(x, y - 1, z + 1));
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        Cube(texturePos);
+    }
+
+    void CubeEast(int x, int y, int z, byte block)
+    {
+        newVertices.Add(new Vector3(x + 1, y - 1, z));
+        newVertices.Add(new Vector3(x + 1, y, z));
+        newVertices.Add(new Vector3(x + 1, y, z + 1));
+        newVertices.Add(new Vector3(x + 1, y - 1, z + 1));
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        Cube(texturePos);
+    }
+
+    void CubeSouth(int x, int y, int z, byte block)
+    {
+        newVertices.Add(new Vector3(x, y - 1, z));
+        newVertices.Add(new Vector3(x, y, z));
+        newVertices.Add(new Vector3(x + 1, y, z));
+        newVertices.Add(new Vector3(x + 1, y - 1, z));
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        Cube(texturePos);
+    }
+
+    void CubeWest(int x, int y, int z, byte block)
+    {
+        newVertices.Add(new Vector3(x, y - 1, z + 1));
+        newVertices.Add(new Vector3(x, y, z + 1));
+        newVertices.Add(new Vector3(x, y, z));
+        newVertices.Add(new Vector3(x, y - 1, z));
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        Cube(texturePos);
+    }
+
+    void CubeBot(int x, int y, int z, byte block)
+    {
+        newVertices.Add(new Vector3(x, y - 1, z));
+        newVertices.Add(new Vector3(x + 1, y - 1, z));
+        newVertices.Add(new Vector3(x + 1, y - 1, z + 1));
+        newVertices.Add(new Vector3(x, y - 1, z + 1));
+
+        Vector2 texturePos; ;
+        texturePos = rock;
+
+        Cube(texturePos);
+    }
+
+    void Cube (Vector2 texturePos)
+    {
+        newTriangles.Add(faceCount * 4); //1
+        newTriangles.Add(faceCount * 4 + 1); //2
+        newTriangles.Add(faceCount * 4 + 2); //2
+        newTriangles.Add(faceCount * 4); //1
+        newTriangles.Add(faceCount * 4 + 2); //3
+        newTriangles.Add(faceCount * 4 + 3); //4
+
+        newUV.Add(new Vector2(textureWidth * texturePos.x + textureWidth, textureWidth * texturePos.y));
+        newUV.Add(new Vector2(textureWidth * texturePos.x + textureWidth, textureWidth * texturePos.y + textureWidth));
+        newUV.Add(new Vector2(textureWidth * texturePos.x, textureWidth * texturePos.y + textureWidth));
+        newUV.Add(new Vector2(textureWidth * texturePos.x, textureWidth * texturePos.y));
+
+        faceCount++; 
     }
 }
