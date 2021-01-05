@@ -23,9 +23,12 @@ public class Chunk : MonoBehaviour
     private float textureWidth = 0.083f;
     private int faceCount = 0;
     private World world;
+    private int chunkSize = 16;
+    private int chunkX;
+    private int chunkY;
+    private int chunkZ;
 
-    [SerializeField] GameObject worldGO;
-    [SerializeField] int chunkSize = 16;
+    private GameObject worldGO;
 
     //Textures
     private Vector2 grassTop = new Vector2(1,11);
@@ -36,6 +39,62 @@ public class Chunk : MonoBehaviour
     private Vector2 ice = new Vector2(4, 11);
     private Vector2 magma = new Vector2(1, 8);
 
+    public int ChunkSize
+    {
+        get
+        {
+            return chunkSize;
+        }
+        set
+        {
+            chunkSize = value;
+        }
+    }
+    public int ChunkX
+    {
+        get
+        {
+            return chunkX;
+        }
+        set
+        {
+            chunkX = value;
+        }
+    }
+    public int ChunkY
+    {
+        get
+        {
+            return chunkY;
+        }
+        set
+        {
+            chunkY = value;
+        }
+    }
+    public int ChunkZ
+    {
+        get
+        {
+            return chunkZ;
+        }
+        set
+        {
+            chunkZ = value;
+        }
+    }
+    public GameObject WorldGO
+    {
+        get
+        {
+            return worldGO;
+        }
+        set
+        {
+            worldGO = value;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,14 +102,16 @@ public class Chunk : MonoBehaviour
         mesh = GetComponent<MeshFilter>().mesh;
         chunkCollider = GetComponent<MeshCollider>();
 
-        CubeTop(0, 0, 0, (byte)TextureType.rock.GetHashCode());
-        CubeNorth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
-        CubeEast(0, 0, 0, (byte)TextureType.rock.GetHashCode());
-        CubeSouth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
-        CubeWest(0, 0, 0, (byte)TextureType.rock.GetHashCode());
-        CubeBot(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        //CubeTop(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        //CubeNorth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        //CubeEast(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        //CubeSouth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        //CubeWest(0, 0, 0, (byte)TextureType.rock.GetHashCode());
+        //CubeBot(0, 0, 0, (byte)TextureType.rock.GetHashCode());
 
-        UpdateMesh();
+        //UpdateMesh();
+
+        GenerateMesh();
     }
 
     // Update is called once per frame
