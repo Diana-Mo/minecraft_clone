@@ -370,6 +370,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5073405244398840896, guid: 1a06acdce72f64353a7db08409b26f0c,
         type: 3}
+    - target: {fileID: 6917180765473542876, guid: 90927e8c4ca1d4d35bd41758d73fe478,
+        type: 3}
+      propertyPath: worldX
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917180765473542876, guid: 90927e8c4ca1d4d35bd41758d73fe478,
+        type: 3}
+      propertyPath: worldY
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917180765473542876, guid: 90927e8c4ca1d4d35bd41758d73fe478,
+        type: 3}
+      propertyPath: worldZ
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 7889722669266760139, guid: 90927e8c4ca1d4d35bd41758d73fe478,
         type: 3}
       propertyPath: m_Name
