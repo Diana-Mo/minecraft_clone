@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Noise;
 
 public class World : MonoBehaviour
 {
@@ -57,6 +58,21 @@ public class World : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int PerlinNoise (int x, int y, int z, float scale, float heaight, float power)
+    {
+        float perlinValue;
+        perlinValue = Noise.Noise.GetNoise((double)x / scale, (double)y / scale, (double)z / scale);
+        perlinValue += height;
+
+        if (power != 0)
+        {
+            perlinValue = Mathf.Pow(perlinValue, power);
+
+        }
+        return (int)perlinValue;
+
     }
 
     public byte Block (int x, int y, int z)
