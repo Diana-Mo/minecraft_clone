@@ -21,16 +21,28 @@ public class World : MonoBehaviour
 
         for(int x = 0; x < worldX; x++ )
         {
-            for (int y = 0; y < worldY; y++)
+            for (int z = 0; z < worldZ; z++)
             {
-                for (int z = 0; z < worldZ; z++)
+                int rock = PerlinNoise(x, 0, z, 10f, 3f, 1.2f);
+                rock += PerlinNoise(x, 200, z, 50, 30f, 0f) + 10;
+                int grass = PerlinNoise(x, 100, z, 50, 30f, 0f) + 1;
+                for (int y = 0; y < worldY; y++)
                 {
-                    if (y <= 8)
+                    if (y <= rock)
+                    {
+                        worldData[x, y, z] = (byte)TextureType.grass.GetHashCode();
+                    }
+                    else if (y <= grass)
                     {
                         worldData[x, y, z] = (byte)TextureType.rock.GetHashCode();
-
                     }
+
                 }
+                    //if (y <= 8)
+                    //{
+                    //    worldData[x, y, z] = (byte)TextureType.rock.GetHashCode();
+
+                    //}
             }
         }
 
@@ -60,7 +72,7 @@ public class World : MonoBehaviour
         
     }
 
-    public int PerlinNoise (int x, int y, int z, float scale, float heaight, float power)
+    public int PerlinNoise (int x, int y, int z, float scale, float height, float power)
     {
         float perlinValue;
         perlinValue = Noise.Noise.GetNoise((double)x / scale, (double)y / scale, (double)z / scale);

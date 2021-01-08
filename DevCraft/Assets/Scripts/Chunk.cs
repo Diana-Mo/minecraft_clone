@@ -4,8 +4,9 @@ using UnityEngine;
 
 public enum TextureType
 {
-    air, grass, rock, icyGrass, ice
+    air, grass, rock
 }
+//icyGrass, ice
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshCollider))]
@@ -211,8 +212,14 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x, y, z + 1));
         newVertices.Add(new Vector3(x, y - 1, z + 1));
 
-        Vector2 texturePos; ;
-        texturePos = rock;
+        Vector2 texturePos = new Vector2(0, 0);
+        //texturePos = rock;
+
+        if (block == (byte)TextureType.rock.GetHashCode())
+        {
+            texturePos = rock;
+        }
+        else if (block )
 
         Cube(texturePos);
     }
