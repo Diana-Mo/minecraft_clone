@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum TextureType
 {
-    air, grass, rock
+    air, grass, rock, icyGrass, ice
 }
 //icyGrass, ice
 
@@ -199,8 +199,16 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x+1, y, z));
         newVertices.Add(new Vector3(x, y, z));
 
-        Vector2 texturePos; ;
-        texturePos = rock;
+        Vector2 texturePos = new Vector2(0, 0);
+        
+        if (block == (byte)TextureType.rock.GetHashCode())
+        {
+            texturePos = rock;
+        }
+        else if (block == (byte)TextureType.grass.GetHashCode())
+        {
+            texturePos = grassTop;
+        }
 
         Cube(texturePos);
     }
@@ -211,17 +219,12 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x + 1, y, z + 1));
         newVertices.Add(new Vector3(x, y, z + 1));
         newVertices.Add(new Vector3(x, y - 1, z + 1));
-
-        Vector2 texturePos = new Vector2(0, 0);
+        //Vector2 texturePos; 
         //texturePos = rock;
-
-        if (block == (byte)TextureType.rock.GetHashCode())
-        {
-            texturePos = rock;
-        }
-        else if (block )
+        Vector2 texturePos = setSideTextures(x, y, z, block);
 
         Cube(texturePos);
+
     }
 
     void CubeEast(int x, int y, int z, byte block)
@@ -231,8 +234,7 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x + 1, y, z + 1));
         newVertices.Add(new Vector3(x + 1, y - 1, z + 1));
 
-        Vector2 texturePos; ;
-        texturePos = rock;
+        Vector2 texturePos = setSideTextures(x, y, z, block);
 
         Cube(texturePos);
     }
@@ -244,8 +246,7 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x + 1, y, z));
         newVertices.Add(new Vector3(x + 1, y - 1, z));
 
-        Vector2 texturePos; ;
-        texturePos = rock;
+        Vector2 texturePos = setSideTextures(x, y, z, block);
 
         Cube(texturePos);
     }
@@ -257,8 +258,7 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x, y, z));
         newVertices.Add(new Vector3(x, y - 1, z));
 
-        Vector2 texturePos; ;
-        texturePos = rock;
+        Vector2 texturePos = setSideTextures(x, y, z, block);
 
         Cube(texturePos);
     }
@@ -270,10 +270,23 @@ public class Chunk : MonoBehaviour
         newVertices.Add(new Vector3(x + 1, y - 1, z + 1));
         newVertices.Add(new Vector3(x, y - 1, z + 1));
 
-        Vector2 texturePos; ;
-        texturePos = rock;
+        Vector2 texturePos = setSideTextures(x, y, z, block);
 
         Cube(texturePos);
+    }
+
+    public Vector2 setSideTextures(int x, int y, int z, byte block)
+    {
+        Vector2 texturePos = new Vector2(0, 0);
+        if (block == (byte)TextureType.rock.GetHashCode())
+        {
+            texturePos = rock;
+        }
+        else if (block == (byte)TextureType.grass.GetHashCode())
+        {
+            texturePos = grassSide;
+        }
+        return texturePos;
     }
 
     void Cube (Vector2 texturePos)
