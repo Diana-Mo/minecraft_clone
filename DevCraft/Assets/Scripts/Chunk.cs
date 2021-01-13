@@ -111,7 +111,6 @@ public class Chunk : MonoBehaviour
         //CubeSouth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
         //CubeWest(0, 0, 0, (byte)TextureType.rock.GetHashCode());
         //CubeBot(0, 0, 0, (byte)TextureType.rock.GetHashCode());
-
         //UpdateMesh();
 
         GenerateMesh();
@@ -209,7 +208,6 @@ public class Chunk : MonoBehaviour
         {
             texturePos = grassTop;
         }
-
         Cube(texturePos);
     }
 
@@ -224,7 +222,6 @@ public class Chunk : MonoBehaviour
         Vector2 texturePos = setSideTextures(x, y, z, block);
 
         Cube(texturePos);
-
     }
 
     void CubeEast(int x, int y, int z, byte block)

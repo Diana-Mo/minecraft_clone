@@ -13,7 +13,6 @@ public class World : MonoBehaviour
     private byte[,,] worldData;
     private Chunk[,,] chunks;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +28,6 @@ public class World : MonoBehaviour
                 //int icyGrass = PerlinNoise(x, 50, z, 50, 30f, 0f) + 1;
                 //int ice = PerlinNoise(x, 3, z, 10f, 3.2f, 1.5f);
                 //ice += PerlinNoise(x, 300, z, 50, 30f, 0f) + 12;
-
                 for (int y = 0; y < worldY; y++)
                 {
                     if (y <= rock)
@@ -80,7 +78,6 @@ public class World : MonoBehaviour
                 }
             }
         }
-
     }
 
     // Update is called once per frame
@@ -108,7 +105,6 @@ public class World : MonoBehaviour
         {
             return (byte)TextureType.rock.GetHashCode();
         }
-
         return worldData[x, y, z];
     }
 }
