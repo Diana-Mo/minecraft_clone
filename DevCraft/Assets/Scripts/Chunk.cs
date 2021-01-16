@@ -105,6 +105,8 @@ public class Chunk : MonoBehaviour
         mesh = GetComponent<MeshFilter>().mesh;
         chunkCollider = GetComponent<MeshCollider>();
 
+        CubeTop(0, 0, 0, (byte)TextureType.ice.GetHashCode());
+
         //CubeTop(0, 0, 0, (byte)TextureType.rock.GetHashCode());
         //CubeNorth(0, 0, 0, (byte)TextureType.rock.GetHashCode());
         //CubeEast(0, 0, 0, (byte)TextureType.rock.GetHashCode());
