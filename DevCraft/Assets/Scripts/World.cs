@@ -25,9 +25,9 @@ public class World : MonoBehaviour
                 int rock = PerlinNoise(x, 0, z, 10f, 3f, 1.2f);
                 rock += PerlinNoise(x, 200, z, 50, 30f, 0f) + 10;
                 int grass = PerlinNoise(x, 100, z, 50, 30f, 0f) + 1;
-                int icyGrass = PerlinNoise(x, 50, z, 50, 30f, 0f) + 1;
-                int ice = PerlinNoise(x, 3, z, 10f, 3.2f, 1.5f);
-                ice += PerlinNoise(x, 350, z, 50, 30f, 0f) + 12;
+                //int icyGrass = PerlinNoise(x, 50, z, 50, 30f, 0f) + 1;
+                //int ice = PerlinNoise(x, 3, z, 10f, 3.2f, 1.5f);
+                //ice += PerlinNoise(x, 350, z, 50, 30f, 0f) + 12;
                 
                 //int ice = PerlinNoise(x, 3, z, 10f, 3.2f, 1.5f);
                 //ice += PerlinNoise(x, 300, z, 50, 30f, 0f) + 12;
@@ -42,18 +42,18 @@ public class World : MonoBehaviour
                     {
                         worldData[x, y, z] = (byte)TextureType.rock.GetHashCode();
                     }
-                    else if (y <= rock && y != grass)
-                    {
-                        worldData[x, y, z] = (byte)TextureType.icyGrass.GetHashCode();
-                    }
-                    else if (y <= icyGrass)
-                    {
-                        worldData[x, y, z] = (byte)TextureType.ice.GetHashCode();
-                    }
-                    else if (y >= icyGrass)
-                    {
-                        worldData[x, y, z] = (byte)TextureType.ice.GetHashCode();
-                    }
+                    //else if (y <= rock && y != grass)
+                    //{
+                    //    worldData[x, y, z] = (byte)TextureType.icyGrass.GetHashCode();
+                    //}
+                    //else if (y <= icyGrass)
+                    //{
+                    //    worldData[x, y, z] = (byte)TextureType.ice.GetHashCode();
+                    //}
+                    //else if (y >= icyGrass)
+                    //{
+                    //    worldData[x, y, z] = (byte)TextureType.ice.GetHashCode();
+                    //}
 
                 }
                     //if (y <= 8)
