@@ -509,6 +509,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9077113439763683424, guid: 7cd089daa78fa4453ad96bc0bd1d5a89,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cd0da641097eb47e290c955f7296fc8f, type: 2}
     - target: {fileID: 9077113439773043234, guid: 7cd089daa78fa4453ad96bc0bd1d5a89,
         type: 3}
       propertyPath: m_Name
@@ -583,6 +588,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077113439773472676, guid: 7cd089daa78fa4453ad96bc0bd1d5a89,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077113439773472680, guid: 7cd089daa78fa4453ad96bc0bd1d5a89,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077113439773472690, guid: 7cd089daa78fa4453ad96bc0bd1d5a89,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cd089daa78fa4453ad96bc0bd1d5a89, type: 3}
