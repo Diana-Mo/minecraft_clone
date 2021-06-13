@@ -10,6 +10,8 @@ public class CharacterControl : MonoBehaviour
 
     [SerializeField] int moveSpeed;
     [SerializeField] int jumpHeight;
+
+    //private CharacterController charController;
     private Rigidbody charRigidBody;
     private Animator anim;
 
@@ -25,5 +27,15 @@ public class CharacterControl : MonoBehaviour
     {
         Vector3 moveChar = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         transform.position += moveChar * Time.deltaTime * moveSpeed;
+        //charController.SimpleMove(moveChar * moveSpeed);
+
+        if (charRigidBody.velocity.magnitude == 0)
+        {
+            anim.SetBool("isWalking", false);
+        } else
+        {
+            anim.SetBool("isWalking", true);
+        }
+
     }
 }
