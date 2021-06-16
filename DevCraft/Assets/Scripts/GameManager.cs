@@ -46,20 +46,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void jumpBtnPressed()
-    {
-        IsJumping = true;
-    }
+    //public void jumpBtnPressed()
+    //{
+    //    IsJumping = true;
+    //}
 
-    public void punchBtnPressed()
-    {
-        IsPunching = true;
-    }
+    //public void punchBtnPressed()
+    //{
+    //    IsPunching = true;
+    //}
 
-    public void buildBtnPressed()
-    {
-        IsBuilding = true;
-    }
+    //public void buildBtnPressed()
+    //{
+    //    IsBuilding = true;
+    //}
 
     static public GameManager Instance
     {
