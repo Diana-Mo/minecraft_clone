@@ -37,5 +37,21 @@ public class CharacterControl : MonoBehaviour
             anim.SetBool("isWalking", true);
         }
 
+        if (GameManager.Instance.IsJumping)
+        {
+            anim.SetTrigger("Jump");
+            transform.Translate(Vector3.up * jumpHeight * Time.deltaTime, Space.World);
+            GameManager.Instance.IsJumping = false;
+        }
+        if (GameManager.Instance.IsPunching)
+        {
+            anim.SetTrigger("Punch");
+            GameManager.Instance.IsPunching = false;
+        }
+        if (GameManager.Instance.IsBuilding)
+        {
+            anim.SetTrigger("Punch");
+            GameManager.Instance.IsBuilding = false;
+        }
     }
 }

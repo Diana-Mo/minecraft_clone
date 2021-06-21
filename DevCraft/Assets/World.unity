@@ -127,7 +127,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2477650599938689146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &182685074
+--- !u!114 &182685078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  jumpHeight: 1
+  jumpHeight: 100
 --- !u!114 &617313824 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5618187926844131730, guid: a998095dda7974538bd3e496042d4604,
@@ -391,7 +391,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2477650599938689146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &903465313
+--- !u!114 &903465317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
